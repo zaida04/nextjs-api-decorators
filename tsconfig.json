@@ -5,7 +5,7 @@
         "alwaysStrict": true,
         "moduleResolution": "node",
         "removeComments": true,
-        "pretty": true,
+        "pretty": false,
         "module": "CommonJS",
         "outDir": "./dist",
         "skipLibCheck": true,
