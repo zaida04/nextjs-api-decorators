@@ -9,14 +9,16 @@
 This package is an addon to next.js that allows you to use decorators in a class setting to structure your Next.JS API. This was created due to the age old problem in Next.JS of having to do
 
 ```typescript
-if(req.method === "POST") {
-  ...
-} else if (req.method === "POST") {
-  ...
+export default APIHandlingFunction(req, res) {
+  if(req.method === "GET") {
+    ...
+  } else if (req.method === "POST") {
+    ...
+  }
 }
 ```
 
-in every API file. This leads to clutter, or you having to duplicate a hot glue fix using the map solution implemented in this library across all your files.
+in every API file. This leads to clutter, or you having to duplicate a fix using the map solution implemented in this library across all your files.
 
 ## 📥 Installation
 
