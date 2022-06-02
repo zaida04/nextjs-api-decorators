@@ -23,7 +23,7 @@ export const http = (handlerName: string) => {
 
 // this is what will be used to "dynamically" handle api requests
 // accepts the name of the route handler
-export const genAPIRoute = (handlerName: string) => {
+export const genAPIRoute = (handlerName: string, methodNotFoundPayload: any = { error: { message: "This method is not implemented." } }) => {
     const handler = handlers.get(handlerName);
     if (!handler) throw new Error("Missing handler!");
 
@@ -31,6 +31,6 @@ export const genAPIRoute = (handlerName: string) => {
     return (req: NextApiRequest, res: NextApiResponse) => {
         // get the handler for this method, otherwise error
         const methodHandler = handler[req.method as HTTPMethod];
-        return methodHandler ? methodHandler(req, res) : res.status(405).end("Nah");
+        return methodHandler ? methodHandler(req, res) : res.status(405).json(methodNotFoundPayload);
     };
 };
